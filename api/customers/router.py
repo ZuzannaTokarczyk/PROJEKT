@@ -32,9 +32,9 @@ async def update_customer(
         raise HTTPException(
             status_code=404, detail=f"Customer with ID={customer_id} does not exist."
         )
-
+    
     CUSTOMERS_STORAGE[customer_id] = Customer(**(CUSTOMERS_STORAGE[customer_id].dict() | updated_customer.dict(exclude_unset=True)))
-    return CUSTOMERS_STORAGE[customer_id]   
+    return CUSTOMERS_STORAGE[customer_id] 
 
 
 @router.delete("/{customer_id}")
